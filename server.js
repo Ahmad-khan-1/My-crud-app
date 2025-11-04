@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 const writerRoutes = require("./routes/writerRoutes");
+require("dotenv").config();
 
 //middle ware
 app.use(cors());
@@ -12,9 +13,7 @@ app.use("/writers", writerRoutes);
 //connect to Mongodb
 
 mongoose
-  .connect(
-    "mongodb+srv://amanullahqurayshi_db_user:ZATmfNkyr8GF7feS@cluster0.d0c2drt.mongodb.net/my-backend?retryWrites=true&w=majority&appName=Cluster0"
-  )
+  .connect(mongoose.connect(process.env.MONGO_URI))
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.log("❌ Error:", err));
 // crud Routes
