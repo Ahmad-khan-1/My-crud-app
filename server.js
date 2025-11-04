@@ -13,7 +13,7 @@ app.use("/writers", writerRoutes);
 //connect to Mongodb
 
 mongoose
-  .connect(mongoose.connect(process.env.MONGO_URI))
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.log("❌ Error:", err));
 // crud Routes
